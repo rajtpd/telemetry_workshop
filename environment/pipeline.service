@@ -1,0 +1,15 @@
+[Unit]
+Description=Pipeline Service
+After=network-online.target
+
+[Service]
+Restart=on-failure
+User=cisco
+Environment=APPCFG="/home/cisco/environment/pipeline.conf"
+Environment=APPLOG="/home/cisco/log/pipeline.log"
+Environment=APPPEM="/home/cisco/environment/pig"
+ExecStart=/home/cisco/pipeline/bin/pipeline -config $APPCFG -log $APPLOG -pem $APPPEM
+ExecStop=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

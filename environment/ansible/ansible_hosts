@@ -1,0 +1,7 @@
+#127.0.0.1 ansible_connection=ssh ansible_ssh_user=cisco ansible_ssh_pass=cisco ansible_sudo_pass=cisco
+server   ansible_host=127.0.0.1 ansible_connection=ssh
+
+[Routers]
+XR9K-1_198.18.1.165 ansible_host=198.18.1.165 ansible_port=22 ansible_connection=local ansible_ssh_user=cisco ansible_ssh_pass=cisco
+XE1K-1_198.18.1.164 ansible_host=198.18.1.164 ansible_port=22 ansible_connection=local ansible_ssh_user=cisco ansible_ssh_pass=cisco
+NX9K-1_198.18.1.162 ansible_host=198.18.1.162 ansible_port=22 ansible_connection=local ansible_ssh_user=cisco ansible_ssh_pass=cisco

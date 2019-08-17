@@ -1,0 +1,37 @@
+---
+
+- hosts: server
+  become: true
+  gather_facts: no
+
+  pre_tasks:
+
+  - name: Retriving secrets
+    include_vars: "secrets.yml"
+    no_log: true
+
+  - name: Pre-staging phase - including configuration variables
+    include_vars:
+      file: env.yml
+    no_log: True
+    tags:
+      - debug
+      
+  - name: Checking services facts
+    service_facts:
+    register: service_info
+
+  tasks:
+
+  - name: Update pipeline.conf - adding Inspector Tap Phase (dump.txt) 
+    blockinfile:
+      path: "{{env_path}}/pipeline.conf"
+      marker: "#<!-- {mark} Ansible Managed  - Dump Config -->"
+      block: "{{ lookup('file', 'templates/dump.cfg') }}"
+
+  - name: Restart Pipeline (init) - if running
+    service:
+      name: pipeline
+      state: restarted
+    when: service_info.ansible_facts.services["pipeline.service"].state == "running"
+
