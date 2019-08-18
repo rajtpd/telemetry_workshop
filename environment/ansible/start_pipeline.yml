@@ -55,7 +55,8 @@
     tags:
       - debug
 
-  - name: Start Pipeline as init service
-    service:
+  - name: Start Pipeline as service
+    systemd:
       name: pipeline
       state: started
+      daemon_reload: yes
