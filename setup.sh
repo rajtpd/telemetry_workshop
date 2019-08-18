@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 echo -e "\e[92m Starting Setup...\e[0m"
 echo
