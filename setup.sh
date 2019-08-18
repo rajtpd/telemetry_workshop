@@ -15,7 +15,7 @@ echo "Done! Installing ansible...."
 echo
 echo
 echo "Encrypting vault"
-ansible-vault encrypt ~/environment/ansible/secrets.yml
+ansible-vault encrypt ~/telemetry_workshop/environment/ansible/secrets.yml
 echo "Done encrypting"
 echo
 echo
