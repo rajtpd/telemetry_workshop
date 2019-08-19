@@ -65,5 +65,12 @@ mv * ../
 cd ..
 rm -rf ./telemetry_workshop
 echo
+echo
+echo -e "\e[92mAdding local host fingerprint!\e[0m"
+echo
+echo
+ssh-keyscan -H 192.168.1.162 >> ~/.ssh/known_hosts
+echo
+echo
 echo -e "\e[92mDone with Setup!\e[0m"
 echo
